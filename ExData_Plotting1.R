@@ -23,8 +23,8 @@ unlink(temp)
 
 
 # load the data from local copy of data
-data <- read.csv2(file = "data/household_power_consumption.txt", 
-                  na.strings = c("?","NA"), dec = '.')
+#data <- read.csv2(file = "data/household_power_consumption.txt", 
+#                  na.strings = c("?","NA"), dec = '.')
 
 # convert Date and Time columns into a new DateTime column
 data$DateTime <- strptime(paste(data$Date,data$Time), 

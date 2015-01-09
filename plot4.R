@@ -19,9 +19,12 @@
 # notes: plot is based on data for 2007-02-01 & 2007-02-02
 ###
 
-# load the data from local copy of data
-data <- read.csv2(file = "data/household_power_consumption.txt", 
-                  na.strings = c("?","NA"), dec = '.')
+# load data from the web
+temp <- tempfile()
+download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",temp)
+data <- read.csv2(unz(temp, "household_power_consumption.txt"),
+                  na.strings = c("?","NA"), dec = ".")
+unlink(temp)
 
 # convert Date and Time columns into a new DateTime column
 data$DateTime <- strptime(paste(data$Date,data$Time), 
